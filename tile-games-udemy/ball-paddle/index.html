@@ -91,7 +91,6 @@
 			if( col >= 0 && col < BRICK_COLS &&
 					row >= 0 && row < BRICK_ROWS){
 				const brickIndexUnderCoord = rowColToArrayIndex(col, row);
-				console.log(brickGrid[brickIndexUnderCoord]);
 				return brickGrid[brickIndexUnderCoord];
 			}
 			return false;
