@@ -1,3 +1,5 @@
+const roadPic = document.createElement('img'), wallPic = document.createElement('img');
+
 const TRACK_W = 40;
 const TRACK_H = 40;
 const TRACK_GAP = 2;
@@ -27,6 +29,11 @@ const trackGrid = [
 const TRACK_ROAD = 0;
 const TRACK_WALL = 1;
 const TRACK_PLAYERSTART = 2;
+
+function trackLoadImages() {
+	roadPic.src = 'track_road.jpg';
+	wallPic.src = 'track_wall.jpg';
+}
 
 function isWallAtColRow(col, row) {
 	if (col >= 0 && col < TRACK_COLS && row >= 0 && row < TRACK_ROWS) {
@@ -59,7 +66,9 @@ function drawTracks() {
 		for (let col = 0; col < TRACK_COLS; col++) {
 			const arrayIndex = rowColToArrayIndex(col, row);
 			if (trackGrid[arrayIndex] === TRACK_WALL) {
-				colorRect(TRACK_W * col, TRACK_H * row, TRACK_DRAW_WIDTH, TRACK_DRAW_HEIGHT, 'blue');
+				canvasContext.drawImage(wallPic, TRACK_W * col, TRACK_H * row);
+			} else if (trackGrid[arrayIndex] === TRACK_ROAD) {
+				canvasContext.drawImage(roadPic, TRACK_W * col, TRACK_H * row);
 			}
 		}
 	}
