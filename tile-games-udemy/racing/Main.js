@@ -4,16 +4,18 @@ window.onload = function() {
 	canvas = document.getElementById('gameCanvas');
 	canvasContext = canvas.getContext('2d');
 
+	loadImages();
+};
+
+function startGame() {
 	const framesPerSecond = 30;
 	const framesUpdateInterval = 1000 / framesPerSecond;
 	setInterval(updateAll, framesUpdateInterval);
 
 	setupInput();
 
-	trackLoadImages();
-	carImageLoad();
 	carReset();
-};
+}
 
 function updateAll() {
 	moveAll();
