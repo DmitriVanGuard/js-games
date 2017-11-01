@@ -41,7 +41,7 @@ function carClass() {
 				if (trackGrid[arrayIndex] === TRACK_PLAYERSTART) {
 					trackGrid[arrayIndex] = TRACK_ROAD;
 					this.ang = -Math.PI / 2;
-					this.x = col * TRACK_W;
+					this.x = col * TRACK_W + TRACK_W / 2;
 					this.y = row * TRACK_H;
 					return;
 				}
