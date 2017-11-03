@@ -14,7 +14,7 @@ const levelOne =
 				2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 4, 2, 2, 3, 2, 2,
 				2, 0, 0, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 2,
-				2, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+				2, 0, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
 				2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0, 2,
@@ -35,7 +35,8 @@ function DungeonClass() {
 	this.currentLevel = null;
 
 	this.setLevel = function(level) {
-		this.currentLevel = level.concat();
+		this.currentLevel = level;
+		this.drawLevel = level.concat();
 	};
 
 	this.draw = function() {
@@ -45,7 +46,7 @@ function DungeonClass() {
 
 		for (let row = 0; row < TILE_ROWS; row++) {
 			for (let col = 0; col < TILE_COLS; col++) {
-				const currentTile = this.currentLevel[currentArrayIndex];
+				const currentTile = this.drawLevel[currentArrayIndex];
 				const currentTileImage = LEVEL_BLOCK_IMAGES[currentTile];
 
 				ctx.drawImage(currentTileImage, currentTileX, currentTileY);
@@ -58,5 +59,21 @@ function DungeonClass() {
 		}
 	};
 
-	return this.setLevel(levelOne);
+	this.reset = function() {
+		this.drawLevel = this.currentLevel;
+
+		for (let row = 0; row < TILE_ROWS; row++) {
+			for (let col = 0; col < TILE_COLS; col++) {
+				const currentTile = this.drawLevel[currentArrayIndex];
+				const currentTileImage = LEVEL_BLOCK_IMAGES[currentTile];
+
+				ctx.drawImage(currentTileImage, currentTileX, currentTileY);
+				// drawRect(currentTileX, currentTileY, currentTileX + TILE_W, currentTileY + TILE_H, 'red');
+				currentTileX += TILE_W;
+				currentArrayIndex++;
+			}
+			currentTileX = 0;
+			currentTileY += TILE_H;
+		}
+	};
 }

@@ -1,8 +1,11 @@
 const LEVEL_BLOCK_IMAGES = [];
 let picsToLoad = 0;
 
+const playerPic = document.createElement('img');
+
 function loadImages() {
 	const imageList = [
+		{ file: 'hero.png', img: playerPic },
 		{ file: 'level_ground.png', tileType: LEVEL_BLOCK_GROUND },
 		{ file: 'level_wall.png', tileType: LEVEL_BLOCK_WALL },
 		{ file: 'level_key.png', tileType: LEVEL_BLOCK_KEY },
@@ -13,7 +16,8 @@ function loadImages() {
 	picsToLoad = imageList.length;
 
 	imageList.forEach(
-		pic => (pic.tileType != undefined ? loadLevelBlockTileImages(pic.tileType, pic.file) : setupImage(pic, pic.file))
+		pic =>
+			pic.tileType != undefined ? loadLevelBlockTileImages(pic.tileType, pic.file) : setupImage(pic.img, pic.file)
 	);
 }
 

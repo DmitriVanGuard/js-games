@@ -1,6 +1,8 @@
 let canvas, ctx;
 
-const Dungeon = new DungeonClass();
+// prettier-ignore
+const Dungeon = new DungeonClass(),
+			Player = new PlayerClass();
 
 window.onload = () => {
 	canvas = document.getElementById('canvas');
@@ -15,9 +17,13 @@ function startGame() {
 	const FPS = 30;
 	const updateRate = 1000 / FPS;
 
+	Dungeon.setLevel(levelOne);
+	Player.reset();
+
 	setInterval(updateAll, updateRate);
 }
 
 function updateAll() {
 	Dungeon.draw();
+	Player.draw();
 }
