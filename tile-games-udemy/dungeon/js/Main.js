@@ -25,5 +25,7 @@ function startGame() {
 
 function updateAll() {
 	Dungeon.draw();
+	Player.move();
 	Player.draw();
 }
+

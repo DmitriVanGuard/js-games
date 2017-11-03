@@ -1,4 +1,4 @@
-const MAX_VELOCITY = 5;
+const MAX_VELOCITY = 3;
 
 function PlayerClass() {
 	this.x = 0;
@@ -10,10 +10,10 @@ function PlayerClass() {
 	};
 
 	this.move = function() {
-		if (up) this.y = MAX_VELOCITY * -1;
-		if (left) this.x = MAX_VELOCITY * -1;
-		if (down) this.y = MAX_VELOCITY;
-		if (right) this.x = MAX_VELOCITY;
+		if (keyHeld_UP) this.y += MAX_VELOCITY * -1;
+		if (keyHeld_LEFT) this.x += MAX_VELOCITY * -1;
+		if (keyHeld_DOWN) this.y += MAX_VELOCITY;
+		if (keyHeld_RIGHT) this.x += MAX_VELOCITY;
 	};
 
 	this.draw = function() {
