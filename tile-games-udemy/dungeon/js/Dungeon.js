@@ -8,16 +8,16 @@ const levelOne =
 			[
 				2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
 				2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 2,
-				2, 0, 0, 4, 0, 0, 2, 0, 0, 4, 2, 0, 0, 2, 2, 2, 0, 0, 0, 2,
-				2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 4, 0, 2,
-				2, 2, 2, 2, 3, 2, 2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2,
-				2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 4, 2, 2, 3, 2, 2,
+				2, 0, 0, {keyId: 4}, 0, 0, 2, 0, 0, {keyId: 3}, 2, 0, 0, 2, 2, 2, 0, 0, 0, 2,
+				2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, {keyId: 2}, 0, 2,
+				2, 2, 2, 2, {doorId: 2}, 2, 2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 2,
+				2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, {keyId: 1}, 2, 2, {doorId: 1}, 2, 2,
 				2, 0, 0, 0, 0, 0, {keyId: 0}, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 0, 0, 0, 0, 0, 0, 0, 0, 0, {doorId: 0}, 0, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 0, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-				2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2,
+				2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, {doorId: 4}, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2,
-				2, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0, 2,
+				2, 0, 0, 0, 0, {doorId: 3}, 0, 0, 0, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0, 2,
 				2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2,
 				2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
@@ -55,7 +55,7 @@ function DungeonClass() {
 				} else {
 					currentTileImage = LEVEL_BLOCK_IMAGES[currentTile];
 				}
-
+				// console.log(currentTileImage, currentArrayIndex, this.drawLevel[currentArrayIndex]);
 				ctx.drawImage(currentTileImage, currentTileX, currentTileY);
 				// drawRect(currentTileX, currentTileY, currentTileX + TILE_W, currentTileY + TILE_H, 'red');
 				currentTileX += TILE_W;
@@ -67,6 +67,6 @@ function DungeonClass() {
 	};
 
 	this.reset = function() {
-		this.drawLevel = this.currentLevel;
+		this.drawLevel = this.currentLevel.concat();
 	};
 }

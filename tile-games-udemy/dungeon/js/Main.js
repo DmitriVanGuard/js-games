@@ -29,3 +29,7 @@ function updateAll() {
 	Player.draw();
 }
 
+function resetAll() {
+	Dungeon.reset();
+	Player.reset();
+}

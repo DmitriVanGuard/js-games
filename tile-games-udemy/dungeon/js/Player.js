@@ -1,4 +1,4 @@
-const MAX_VELOCITY = 3;
+const MAX_VELOCITY = 7;
 
 function PlayerClass() {
 	this.x = 0;
@@ -37,6 +37,9 @@ function PlayerClass() {
 			this.collectKey(levelTileType.keyId, levelTileIndex);
 		} else if (levelTileType.doorId !== undefined && this.keys.includes(levelTileType.doorId)) {
 			this.openDoor(levelTileIndex);
+		} else if (levelTileType === LEVEL_BLOCK_END) {
+			console.log('RESET');
+			resetAll();
 		} else if (levelTileType != LEVEL_BLOCK_GROUND) {
 			return true;
 		}
